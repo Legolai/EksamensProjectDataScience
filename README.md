@@ -11,3 +11,5 @@ Ideas for what data to use:
 	4 - Music data (https://github.com/mdeff/fma)
 
 	5 - Various ML repository datasets from http://archive.ics.uci.edu/ml/index.php
+
+Primary idea: A trading bot (ML), maybe compare to different strategy.
