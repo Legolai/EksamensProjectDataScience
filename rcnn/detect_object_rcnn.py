@@ -70,7 +70,7 @@ proba = model.predict(proposals)
 # "pigeon" class
 print("[INFO] applying NMS...")
 labels = lb.classes_[np.argmax(proba, axis=1)]
-idxs = np.where(labels == "Rock Pigeon")[0]
+idxs = np.where(labels == "bird")[0]
 # use the indexes to extract all bounding boxes and associated class
 # label probabilities associated with the "pigeon" class
 boxes = boxes[idxs]

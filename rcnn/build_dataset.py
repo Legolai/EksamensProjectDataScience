@@ -14,6 +14,7 @@ for dirPath in (config.POSITVE_PATH, config.NEGATIVE_PATH):
 		os.makedirs(dirPath)
 # grab all image paths in the input images directory
 imagePaths = list(paths.list_images(config.ORIG_IMAGES))
+print(config.ORIG_IMAGES)
 # initialize the total number of positive and negative images we have
 # saved to disk so far
 totalPositive = 0
