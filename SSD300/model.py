@@ -59,35 +59,35 @@ class VGGBase(nn.Module):
         :param image: images, a tensor of dimensions (N, 3, 300, 300)
         :return: lower-level feature maps conv4_3 and conv7
         """
-        out = F.relu(self.conv1_1(image))  # (N, 64, 300, 300)
-        out = F.relu(self.conv1_2(out))  # (N, 64, 300, 300)
+        out = F.leaky_relu(self.conv1_1(image))  # (N, 64, 300, 300)
+        out = F.leaky_relu(self.conv1_2(out))  # (N, 64, 300, 300)
         out = self.pool1(out)  # (N, 64, 150, 150)
 
-        out = F.relu(self.conv2_1(out))  # (N, 128, 150, 150)
-        out = F.relu(self.conv2_2(out))  # (N, 128, 150, 150)
+        out = F.leaky_relu(self.conv2_1(out))  # (N, 128, 150, 150)
+        out = F.leaky_relu(self.conv2_2(out))  # (N, 128, 150, 150)
         out = self.pool2(out)  # (N, 128, 75, 75)
 
-        out = F.relu(self.conv3_1(out))  # (N, 256, 75, 75)
-        out = F.relu(self.conv3_2(out))  # (N, 256, 75, 75)
-        out = F.relu(self.conv3_3(out))  # (N, 256, 75, 75)
+        out = F.leaky_relu(self.conv3_1(out))  # (N, 256, 75, 75)
+        out = F.leaky_relu(self.conv3_2(out))  # (N, 256, 75, 75)
+        out = F.leaky_relu(self.conv3_3(out))  # (N, 256, 75, 75)
         # (N, 256, 38, 38), it would have been 37 if not for ceil_mode = True
         out = self.pool3(out)
 
-        out = F.relu(self.conv4_1(out))  # (N, 512, 38, 38)
-        out = F.relu(self.conv4_2(out))  # (N, 512, 38, 38)
-        out = F.relu(self.conv4_3(out))  # (N, 512, 38, 38)
+        out = F.leaky_relu(self.conv4_1(out))  # (N, 512, 38, 38)
+        out = F.leaky_relu(self.conv4_2(out))  # (N, 512, 38, 38)
+        out = F.leaky_relu(self.conv4_3(out))  # (N, 512, 38, 38)
         conv4_3_feats = out  # (N, 512, 38, 38)
         out = self.pool4(out)  # (N, 512, 19, 19)
 
-        out = F.relu(self.conv5_1(out))  # (N, 512, 19, 19)
-        out = F.relu(self.conv5_2(out))  # (N, 512, 19, 19)
-        out = F.relu(self.conv5_3(out))  # (N, 512, 19, 19)
+        out = F.leaky_relu(self.conv5_1(out))  # (N, 512, 19, 19)
+        out = F.leaky_relu(self.conv5_2(out))  # (N, 512, 19, 19)
+        out = F.leaky_relu(self.conv5_3(out))  # (N, 512, 19, 19)
         # (N, 512, 19, 19), pool5 does not reduce dimensions
         out = self.pool5(out)
 
-        out = F.relu(self.conv6(out))  # (N, 1024, 19, 19)
+        out = F.leaky_relu(self.conv6(out))  # (N, 1024, 19, 19)
 
-        conv7_feats = F.relu(self.conv7(out))  # (N, 1024, 19, 19)
+        conv7_feats = F.leaky_relu(self.conv7(out))  # (N, 1024, 19, 19)
 
         # Lower-level feature maps
         return conv4_3_feats, conv7_feats
@@ -184,20 +184,20 @@ class AuxiliaryConvolutions(nn.Module):
         :param conv7_feats: lower-level conv7 feature map, a tensor of dimensions (N, 1024, 19, 19)
         :return: higher-level feature maps conv8_2, conv9_2, conv10_2, and conv11_2
         """
-        out = F.relu(self.conv8_1(conv7_feats))  # (N, 256, 19, 19)
-        out = F.relu(self.conv8_2(out))  # (N, 512, 10, 10)
+        out = F.leaky_relu(self.conv8_1(conv7_feats), )  # (N, 256, 19, 19)
+        out = F.leaky_relu(self.conv8_2(out))  # (N, 512, 10, 10)
         conv8_2_feats = out  # (N, 512, 10, 10)
 
-        out = F.relu(self.conv9_1(out))  # (N, 128, 10, 10)
-        out = F.relu(self.conv9_2(out))  # (N, 256, 5, 5)
+        out = F.leaky_relu(self.conv9_1(out))  # (N, 128, 10, 10)
+        out = F.leaky_relu(self.conv9_2(out))  # (N, 256, 5, 5)
         conv9_2_feats = out  # (N, 256, 5, 5)
 
-        out = F.relu(self.conv10_1(out))  # (N, 128, 5, 5)
-        out = F.relu(self.conv10_2(out))  # (N, 256, 3, 3)
+        out = F.leaky_relu(self.conv10_1(out))  # (N, 128, 5, 5)
+        out = F.leaky_relu(self.conv10_2(out))  # (N, 256, 3, 3)
         conv10_2_feats = out  # (N, 256, 3, 3)
 
-        out = F.relu(self.conv11_1(out))  # (N, 128, 3, 3)
-        conv11_2_feats = F.relu(self.conv11_2(out))  # (N, 256, 1, 1)
+        out = F.leaky_relu(self.conv11_1(out))  # (N, 128, 3, 3)
+        conv11_2_feats = F.leaky_relu(self.conv11_2(out))  # (N, 256, 1, 1)
 
         # Higher-level feature maps
         return conv8_2_feats, conv9_2_feats, conv10_2_feats, conv11_2_feats

@@ -14,10 +14,10 @@ keep_difficult = True
 batch_size = 64
 workers = 4
 device = get_device()
-checkpoint = './checkpoint_ssd300_cpu_1.pth.tar'
+checkpoint = './checkpoint_ssd300_cpu_prelu_demon_adam.pth.tar'
 
 # Load model checkpoint that is to be evaluated
-checkpoint = torch.load(checkpoint)
+checkpoint = torch.load(checkpoint, map_location=torch.device('cpu'))
 model = checkpoint['model']
 model = model.to(device)
 
