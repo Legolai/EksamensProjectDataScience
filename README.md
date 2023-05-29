@@ -1,32 +1,65 @@
-# EksamensProjectDataScience
-1. Find an interesting business case that you want to work with. The business case should be:
-* related to data science and machine learning.
-* interesting to you.
-* based on real data. You are not allowed to use data that you have created yourself
+# Exams Project - DataScience
 
-2. You should think about where you can collect the data.
-3. You should think about how you can clean the data.
-4. You should think about how you can visualize the data (drawing out insights from the data).
-5. You should think about how you can model the data (e.g. make predictions, categorization, image analysis).
-* For this part you may not feel ready to come up with ideas yet, but you can make some research and see what projects people are doing with machine learning and data science and use this as inspiration.
-* Your initial ideas may later be changed, but you should start the process of thinking about how you can use machine learning and data science to solve the business case.
+@Legolai
+@michaelxuw
+@MuneebAshraf
 
-Ideas for what data to use:
+## Pigeon Detector
 
-	1 - Google Finance (data on stocks)
+The idea of this project was to create a model that could take a video feed and detect in each frame where there is pigeons.
 
-	2 - Book analysis (possible using http://storage.googleapis.com/books/ngrams/books/datasetsv2.html)
+### Technologies used
 
-	3 - Cypersecurity (malware etc. using https://www.unb.ca/cic/datasets/andmal2020.html) 
+- Pytorch
+- OpenCV
+- XML
+- JSON
+- Pillow
+- Selenium
 
-	4 - Music data (https://github.com/mdeff/fma)
+### Installation guide
 
-	5 - Various ML repository datasets from http://archive.ics.uci.edu/ml/index.php
+Install Pytorch with CUDA
 
+```pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
 
-Primary idea: 
-1. A trading bot (ML), maybe compare to different strategy. Hook up to live data.
-2. Use polygon.io as api to get historical data and live data
-3. ???
-4. GUI showing tradings, protofilo stocks and balance
-5. Recommend Stocks to buy or sell and the amount.
+Install OpenCV
+
+```pip3 install opencv-python```
+
+Install Pillow
+
+```pip3 install Pillow```
+
+Install Selenium
+```TBD```
+
+### User guide
+
+Make sure you are in the SSD300 folder to use the model.
+
+Train
+
+```python3 train.py```
+
+Eval
+
+```python3 eval.py```
+
+Modifier the detect file detect.py, change the checkpoint variable to the trained model you wish to use. Then run the program ```python3 app.py```
+
+### Status
+
+TBD
+
+### List of Challenges
+
+TBD
+
+Project name
+Short description
+List of used 
+Installation guide (if any libraries need to be installed)
+User guide (how to run the program)
+Status (What has been done (and if anything: what was not done))
+List of Challenges you have set up for your self (The things in your project you want to highlight)
