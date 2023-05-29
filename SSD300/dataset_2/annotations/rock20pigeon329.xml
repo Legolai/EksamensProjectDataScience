@@ -1,0 +1,62 @@
+<annotation>
+	<folder>dataset_2</folder>
+	<filename>rock20pigeon329.jpeg</filename>
+	<path>/Users/macnp/Library/CloudStorage/OneDrive-Personal/skole/CPH Business DAT/4. Semester/Python_and_Data_science/EksamensProjectDataScience/SSD300/dataset_2/rock20pigeon329.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>900</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>202</xmin>
+			<ymin>131</ymin>
+			<xmax>488</xmax>
+			<ymax>461</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>40</xmin>
+			<ymin>137</ymin>
+			<xmax>257</xmax>
+			<ymax>426</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>544</xmin>
+			<ymin>243</ymin>
+			<xmax>762</xmax>
+			<ymax>440</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>399</xmin>
+			<ymin>240</ymin>
+			<xmax>640</xmax>
+			<ymax>452</ymax>
+		</bndbox>
+	</object>
+</annotation>

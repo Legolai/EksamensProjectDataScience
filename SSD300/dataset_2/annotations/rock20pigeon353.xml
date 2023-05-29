@@ -1,0 +1,26 @@
+<annotation>
+	<folder>dataset_2</folder>
+	<filename>rock20pigeon353.webp</filename>
+	<path>/Users/macnp/Library/CloudStorage/OneDrive-Personal/skole/CPH Business DAT/4. Semester/Python_and_Data_science/EksamensProjectDataScience/SSD300/dataset_2/rock20pigeon353.webp</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1200</width>
+		<height>900</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>214</xmin>
+			<ymin>128</ymin>
+			<xmax>776</xmax>
+			<ymax>898</ymax>
+		</bndbox>
+	</object>
+</annotation>

@@ -4,7 +4,7 @@ import torch.optim
 import torch.utils.data
 from tqdm import tqdm
 from model import SSD300, MultiBoxLoss
-from datasets import PascalVOCDataset, CustomDataset
+from datasets import PascalVOCDataset, CustomDataset2
 from utils import *
 from optimizer import DemonAdam
 
@@ -46,7 +46,7 @@ def main():
     # train_dataset = PascalVOCDataset(data_folder,
     #                                  split='train',
     #                                  keep_difficult=keep_difficult)
-    train_dataset = CustomDataset(data_folder, split='train')
+    train_dataset = CustomDataset2(data_folder, split='train')
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=batch_size, shuffle=True,
                                                collate_fn=train_dataset.collate_fn, num_workers=workers,
                                                pin_memory=True)  # note that we're passing the collate function here
@@ -104,7 +104,7 @@ def main():
 
         # Save checkpoint
         save_checkpoint(epoch, model, optimizer,
-                        filename='checkpoint_ssd300_cpu_prelu_demon_adam.pth.tar')
+                        filename='checkpoint_ssd300_dataset_2.pth.tar')
 
 
 def train(train_loader, model, criterion, optimizer, epoch):

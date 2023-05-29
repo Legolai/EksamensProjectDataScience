@@ -1,0 +1,50 @@
+<annotation>
+	<folder>dataset_2</folder>
+	<filename>rock20pigeon397.jpeg</filename>
+	<path>/Users/macnp/Library/CloudStorage/OneDrive-Personal/skole/CPH Business DAT/4. Semester/Python_and_Data_science/EksamensProjectDataScience/SSD300/dataset_2/rock20pigeon397.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>990</width>
+		<height>743</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>394</xmin>
+			<ymin>253</ymin>
+			<xmax>829</xmax>
+			<ymax>560</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>273</xmin>
+			<ymin>130</ymin>
+			<xmax>402</xmax>
+			<ymax>446</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>632</xmin>
+			<ymin>107</ymin>
+			<xmax>803</xmax>
+			<ymax>362</ymax>
+		</bndbox>
+	</object>
+</annotation>

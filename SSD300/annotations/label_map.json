@@ -1,10 +1,1 @@
-[
-	{
-		"name": "Background",
-		"id": 0
-	},
-	{
-		"name": "Flying Rat",
-		"id": 1
-	}
-]
+{ "Background": 0, "Flying Rat": 1 }

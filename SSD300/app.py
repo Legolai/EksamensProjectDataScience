@@ -16,7 +16,7 @@ def main() -> None:
         flipped = cv2.flip(frame, 1)
         img = cv2.cvtColor(flipped, cv2.COLOR_BGR2RGB)
         im_pil = Image.fromarray(img)
-        detected_image = detect(im_pil, min_score=0.3,
+        detected_image = detect(im_pil, min_score=0.4,
                                 max_overlap=0.4, top_k=200)
         im_np = cv2.cvtColor(np.asarray(detected_image), cv2.COLOR_RGB2BGR)
         cv2.imshow('frame', im_np)

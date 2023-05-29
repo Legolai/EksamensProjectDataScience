@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw, ImageFont
 device = get_device()
 
 # Load model checkpoint
-checkpoint = 'checkpoint_ssd300_cpu_prelu_demon_adam.pth.tar'
+checkpoint = 'checkpoint_ssd300_cuda_dataset_2.pth.tar'
 checkpoint = torch.load(checkpoint, map_location=torch.device('cpu'))
 start_epoch = checkpoint['epoch'] + 1
 print('\nLoaded checkpoint from epoch %d.\n' % start_epoch)
@@ -97,7 +97,7 @@ def detect(original_image, min_score, max_overlap, top_k, suppress=None):
 
 
 if __name__ == '__main__':
-    img_path = './img/incomplete.jpg'
+    img_path = './annotations/ph2.jpeg'
     original_image = Image.open(img_path, mode='r')
     original_image = original_image.convert('RGB')
-    detect(original_image, min_score=0.6, max_overlap=0.5, top_k=200).show()
+    detect(original_image, min_score=0.2, max_overlap=0.5, top_k=200).show()
