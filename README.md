@@ -32,7 +32,7 @@ Install Pillow
 ```pip3 install Pillow```
 
 Install Selenium
-```TBD```
+```pip3 install selenium```
 
 ### User guide
 

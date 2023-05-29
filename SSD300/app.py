@@ -5,7 +5,7 @@ import numpy as np
 
 
 def main() -> None:
-    webcam = cv2.VideoCapture(1)
+    webcam = cv2.VideoCapture(0)
     width = 512
     height = 512
 
