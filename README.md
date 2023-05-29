@@ -50,11 +50,26 @@ Modifier the detect file detect.py, change the checkpoint variable to the traine
 
 ### Status
 
-TBD
+Getting data
+ - Webscrabing using the google_Image_Scraper.py
+Preparing data
+ - Labelling the images with: https://github.com/heartexlabs/labelImg, using the create_data_lists.py to prepare images and annotations for transformation
+Transformation
+ - The Transform function in utils.py is used to transform the pictures to the correct resolution (also annotations) as well as fully prepare the dataset for modeling
+Modeling and computation
+ - Modelled and trained with model.py, train.py and optimizer.py
+Presentation
+ - The detect.py is then used to connect to the webcam and the app.py for the program to run.
 
 ### List of Challenges
 
-TBD
+To create a webscraber
+To experience/do annotations
+To prepare a dataset (clean up and w/e needed)
+To model and train on a dataset
+To make a program that can run the webcam and detect pigeons.
+
+
 
 Project name
 Short description
