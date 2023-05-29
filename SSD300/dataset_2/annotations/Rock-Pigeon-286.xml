@@ -1,0 +1,39 @@
+<annotation>
+	<folder>dataset_2</folder>
+	<filename>Rock-Pigeon-286.jpg</filename>
+	<path>/Users/macnp/Library/CloudStorage/OneDrive-Personal/skole/CPH Business DAT/4.
+		Semester/Python_and_Data_science/EksamensProjectDataScience/SSD300/dataset_2/Rock-Pigeon-286.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>62</xmin>
+			<ymin>23</ymin>
+			<xmax>251</xmax>
+			<ymax>204</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>Flying Rat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>160</xmin>
+			<ymin>218</ymin>
+			<xmax>233</xmax>
+			<ymax>306</ymax>
+		</bndbox>
+	</object>
+</annotation>
