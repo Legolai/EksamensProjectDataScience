@@ -1,0 +1,27 @@
+<annotation>
+	<folder></folder>
+	<filename>Rock-Pigeon-93_jpg.rf.0516fce6a901acf492d03fe9550e017b.jpg</filename>
+	<path>Rock-Pigeon-93_jpg.rf.0516fce6a901acf492d03fe9550e017b.jpg</path>
+	<source>
+		<database>roboflow.ai</database>
+	</source>
+	<size>
+		<width>416</width>
+		<height>416</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Rock Pigeon</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<occluded>0</occluded>
+		<bndbox>
+			<xmin>19</xmin>
+			<xmax>334</xmax>
+			<ymin>39</ymin>
+			<ymax>313</ymax>
+		</bndbox>
+	</object>
+</annotation>
