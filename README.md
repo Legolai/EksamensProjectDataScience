@@ -69,13 +69,20 @@ Make sure that the python installation you have includes ```tkinter```.
 ### Status
 
 Getting data
- - Webscrabing using the google_Image_Scraper.py [done]
+ - Webscrabing using the google_Image_Scraper.py. [done]
+ 
 Preparing data
- - Labelling the images with: https://github.com/heartexlabs/labelImg, using the create_data_lists.py to prepare images and annotations for transformation [done]
+ - Labelling the images with: https://github.com/heartexlabs/labelImg, using the create_data_lists.py to prepare images and annotations for transformation. [done]
+
+
 Transformation
- - The Transform function in utils.py is used to transform the pictures to the correct resolution (also annotations) as well as fully prepare the dataset for modeling [done]
+ - The Transform function in utils.py is used to transform the pictures to the correct resolution (also annotations) as well as fully prepare the dataset for modeling. [done]
+
+
 Modeling and computation
- - Modelled and trained with model.py, train.py and optimizer.py [done]
+ - Modelled and trained with model.py, train.py and optimizer.py. [done]
+
+
 Presentation
  - The detect.py is then used to connect to the webcam and the app.py for the program to run. [done]
 
