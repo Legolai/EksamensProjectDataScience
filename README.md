@@ -42,7 +42,7 @@ Make sure that the python installation you have includes ```tkinter```.
 
 #### Setup from scratch
 
-1. Edit ```googleImageScrapper.py``` for what kind of images you want and the amount then run the script to fetch images from google images.
+1. Edit ```googleImageScrapper.py``` for what kind of images you want and the amount then run the script to fetch images from google images. (The scrapper is currently only for Firefox)
 
 2. Use a program like [LabelImg](https://github.com/heartexlabs/labelImg) or [MakeSense](https://www.makesense.ai) label images for what object that is need to be detected.
 
@@ -96,3 +96,10 @@ The last step of the raspberry pi pigeon turret was not completed.
 - To model and train on a dataset
 - To make a program that can run the webcam and detect pigeons.
 
+
+### Sources 
+ 
+- [SSD pytorch tutorial](https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Object-Detection)
+- [Optimizer implementation](https://github.com/JRC1995/DemonRangerOptimizer) 
+- [What optimizer to choose](https://johnchenresearch.github.io/demon/)
+- [Base Google image scraper](https://github.com/ohyicong/Google-Image-Scraper)
