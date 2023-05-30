@@ -22,19 +22,27 @@ The idea of this project was to create a model that could take a video feed and 
 
 Install Pytorch with CUDA
 
-```pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118```
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+```
 
 Install OpenCV
 
-```pip3 install opencv-python```
+```
+pip3 install opencv-python
+```
 
 Install Pillow
 
-```pip3 install Pillow```
+```
+pip3 install Pillow
+```
 
 Install Selenium
 
-```pip3 install selenium```
+```
+pip3 install selenium
+```
 
 Make sure that the python installation you have includes ```tkinter```.
 
@@ -93,7 +101,8 @@ The last step of the raspberry pi pigeon turret was not completed.
 - Creating a webscraber
 - To experience/do annotations
 - To prepare a dataset (clean up and w/e needed)
-- To model and train on a dataset
+- Finding a model that works for us and our hardware.
+- Getting enough compute power to train the model and restart when things *failed*.
 - To make a program that can run the webcam and detect pigeons.
 
 
