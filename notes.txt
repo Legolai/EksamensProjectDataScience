@@ -6,11 +6,15 @@ File order:
     - create_data_lists.py
 
     - dataset.py
+    - model.py
+    - optimizer.py
     - train.py
 
     - eval.py
     - detect.py
     - app.py
+
+    - utils.py
 
 
 
@@ -46,7 +50,6 @@ googleImageScraper.py
     The __main__ simply makes a 'googleImageScraper' class, runs 'find_image_urls' followed by 'save_images' with its parameters
 
 
-
 create_data_lists.py
     Is a .py file with 2 methods ('create_data_lists' that runs 'parse_annotation') and 1 main to run 'create_data_lists'
 
@@ -62,8 +65,31 @@ create_data_lists.py
 
 
 
-dataset.py
-    Is a .py file with 3 classes all doing the same but slightly different
 
+dataset.py
+    Is a .py file with 3 classes all doing the same but slightly different, currently only the CustomDataset2 class is used
+
+    CustomDataset2 is initialized with 'data_folder: str, split: str, keep_difficult=False' where split is "basically a command" later
+    given to the transform method from utils.py to determine how it should transform the dataset (either into a train or test dataset)
+    With the path 'data_folder' the images and objects loaded into 'self.images' and 'self.objects' for later use.
+        The class has 3 methods
+        '__len__(self):' is a simple 'return len(self.images)'
+        'collate_fn(self, batch):' is needed by the 'torch.utils.data.DataLoader' so that there can be multiple objects in 1 pictures
+        '__getitem__(self, i):' is needed for when the train.py has to enumerate/go through every image
+            it first opens the image, followed by initializating 'image, boxes, labels, difficulties' that are to be returned
+            after the initialization, all of those variables along with 'self.split' are thrown into the 'transform' method in utils.py
+            and then returned (to the train method train.py)
+
+            The 'transform' returns 'new_image, new_boxes, new_labels, new_difficulties'
+            'if split == 'TRAIN':' then it do a number of additional steps to change a number of images to be different/distorted
+            Before then resizing to our needed size (300x300) along with converting 'new_image' to a normalized "torch tensor"
+
+    CustomDataset is also used in eval.py because it reads csv while the CustomDataset2 reads json files.
+    Besides the changes to allow for this, it functionally is the same as CustomDataset2
+
+
+model.py
+    Is the .py file with our model method along with 4 other auxiliary methods
+    as
 
 

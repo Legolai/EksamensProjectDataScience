@@ -1,5 +1,5 @@
 from utils import *
-from datasets import PascalVOCDataset, CustomDataset
+from datasets import CustomDataset
 from tqdm import tqdm
 from pprint import PrettyPrinter
 from torch.utils.data import DataLoader

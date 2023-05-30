@@ -2,9 +2,8 @@ import time
 import torch.backends.cudnn as cudnn
 import torch.optim
 import torch.utils.data
-from tqdm import tqdm
 from model import SSD300, MultiBoxLoss
-from datasets import PascalVOCDataset, CustomDataset2
+from datasets import CustomDataset2
 from utils import *
 from optimizer import DemonAdam
 
