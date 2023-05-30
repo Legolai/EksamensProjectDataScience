@@ -65,7 +65,7 @@ Presentation
 
 To create a webscraber
 To experience/do annotations
-To prepare a dataset (clean up and w/e needed)
+To prepare a dataset (clean up and what ever needed)
 To model and train on a dataset
 To make a program that can run the webcam and detect pigeons.
 

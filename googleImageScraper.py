@@ -1,18 +1,10 @@
 import selenium
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-from selenium.webdriver import Firefox
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
-from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
-# from webdriver_manager.firefox import GeckoDriverManager
-# from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
 
 import time
 import os
@@ -33,12 +25,11 @@ class googleImageScraper():
             print("[INFO] Image path not found. Creating a new folder.")
             os.makedirs(image_path)
 
+        # initialize the webdriver
         ffoptions = Options()
         if headless:
             ffoptions.add_argument('-headless')
-
         driver = webdriver.Firefox(options=ffoptions)
-
         try:
             driver.get("https://www.google.com/")
         except Exception as e:
@@ -54,6 +45,7 @@ class googleImageScraper():
         self.min_resolution = min_resolution
         self.max_resolution = max_resolution
         self.max_missed = max_missed
+
 
     def find_image_urls(self):
         """
@@ -74,11 +66,13 @@ class googleImageScraper():
         search_string = '//*[@id="islrg"]/div[1]/div[%s]/a[1]/div[1]/img'
         print("search_string is: ", search_string)
 
+        # accept cookies
         consent_screen = WebDriverWait(self.driver, 5).until(
             lambda driver: driver.find_element(by=By.XPATH, value="/html/body/c-wiz"))
         consent_screen.find_elements(
             by=By.TAG_NAME, value="button")[1].click()
 
+        # while loop to download images
         while self.number_of_images > count and missed_count < self.max_missed:
             if indx_2 > 0:
                 try:
@@ -150,6 +144,7 @@ class googleImageScraper():
         self.driver.quit()
         print("[INFO] Google search ended")
         return image_urls
+
 
     def save_images(self, image_urls, keep_filenames):
         """

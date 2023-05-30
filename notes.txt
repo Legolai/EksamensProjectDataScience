@@ -1,0 +1,69 @@
+            General notes    Step by Step
+
+
+File order:
+    - googleImageScraper.py
+    - create_data_lists.py
+
+    - dataset.py
+    - train.py
+
+    - eval.py
+    - detect.py
+    - app.py
+
+
+
+
+
+googleImageScraper.py
+    Class with an init and 2 methods ('find_image_urls' and 'save_images') 
+    along with a main method to run the googleImageScraper to scrape for images
+
+    The init starts off a short check of parameters, notably 'if not os.path.exists', a new folder will be created
+    Followed by initialization of the webdriver, where the '--headless' argument is added to option to make it headless (not open webbrowser)
+    Ending with initialization of a number of variables for the class
+
+    'find_image_urls' starts with initialization of some variables it will use, amongst them 'image_urls' that will be returned
+    Followed by 4 lines of code to deal with the consent cookie page
+    For the while loop to download the images
+        continues to run until 'count = self.number_of_images' or 'missed_count = self.max_missed'
+        The following if/else 'if indx_2 > 0:' tries to "click" on an image found by google images through 'self.driver.find_element', 
+        with multiple try except, resulting in 'missed_count = missed_count + 1' if continuous failure
+
+        If the above is succesful, a bigger image will be shown at the side, which the try/except after 'if indx_2 > 0:',
+        will try to get the 'src_link' of the image (has to be http) and will then add it to the 'image_urls'
+
+        The last try/except in this while loop will slightly scroll the page down
+    Before ending with 'self.driver.quit()' and 'return image_urls'
+
+    'save_images' is a method taking in an array of 'image_urls' and a boolean 'keep_filenames'
+    It consists of one big for loop, that starts out with a try/except for 'image = requests.get(image_url, timeout=5)'
+    If succesful, a try/except in 'with Image.open(io.BytesIO(image.content)) as image_from_web:' will make a filename,
+    that either keeps original or makes a new one
+    followed by saving the image to an 'image_path' ('image_path = os.path.join(self.image_path, filename)')
+
+    The __main__ simply makes a 'googleImageScraper' class, runs 'find_image_urls' followed by 'save_images' with its parameters
+
+
+
+create_data_lists.py
+    Is a .py file with 2 methods ('create_data_lists' that runs 'parse_annotation') and 1 main to run 'create_data_lists'
+
+    'create_data_lists' takes 2 parameters ('path_to_data' and 'output_folder') and with
+    'with os.scandir(f'{path_to_data}/images') as entries:' appends every annotation as an object (gotten from 'parse_annotation')
+    of x image to the list 'train_objects' and the x image to the list 'train_images'
+    Followed by saving the 2 lists to the 'output_folder' (and also a 'label_map' from 'utils.py')
+
+    'parse_annotation' takes the parameter 'annotation_path' and 
+    returns the object '{'boxes': boxes, 'labels': labels, 'difficulties': difficulties}' each of the variables being lists
+    In the for loop, through '.find' different parameters will be found such as x,y min and max
+    culminating in 'boxes.append([xmin, ymin, xmax, ymax])', 'labels.append(label_map[label])' and 'difficulties.append(difficult)'
+
+
+
+dataset.py
+    Is a .py file with 3 classes all doing the same but slightly different
+
+
+

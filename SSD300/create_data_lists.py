@@ -4,36 +4,6 @@ import xml.etree.ElementTree as ET
 import json
 
 
-def parse_annotation(annotation_path):
-    tree = ET.parse(annotation_path)
-    root = tree.getroot()
-
-    boxes = list()
-    labels = list()
-    difficulties = list()
-    for object in root.iter('object'):
-
-        difficult = int(object.find('difficult').text == '1')
-
-        label = object.find('name').text.lower().strip()
-        print(label)
-        if label not in label_map:
-            continue
-
-        print(label)
-
-        bbox = object.find('bndbox')
-        xmin = int(bbox.find('xmin').text) - 1
-        ymin = int(bbox.find('ymin').text) - 1
-        xmax = int(bbox.find('xmax').text) - 1
-        ymax = int(bbox.find('ymax').text) - 1
-
-        boxes.append([xmin, ymin, xmax, ymax])
-        labels.append(label_map[label])
-        difficulties.append(difficult)
-
-    return {'boxes': boxes, 'labels': labels, 'difficulties': difficulties}
-
 
 def create_data_lists(path_to_data, output_folder):
     """
@@ -75,12 +45,14 @@ def create_data_lists(path_to_data, output_folder):
     print('\nThere are %d training images containing a total of %d objects. Files have been saved to %s.' % (
         len(train_images), n_objects, os.path.abspath(output_folder)))
 
+
     # Test data
     test_images = list()
     test_objects = list()
     n_objects = 0
 
     # # Find IDs of images in the test data
+    #region
     # with open(os.path.join(path_to_data, 'ImageSets/Main/test.txt')) as f:
     #     ids = f.read().splitlines()
 
@@ -102,11 +74,42 @@ def create_data_lists(path_to_data, output_folder):
     #     json.dump(test_images, j)
     # with open(os.path.join(output_folder, 'TEST_objects.json'), 'w') as j:
     #     json.dump(test_objects, j)
+    #endregion
 
     print('\nThere are %d test images containing a total of %d objects. Files have been saved to %s.' % (
         len(test_images), n_objects, os.path.abspath(output_folder)))
+    
+
+def parse_annotation(annotation_path):
+    tree = ET.parse(annotation_path)
+    root = tree.getroot()
+
+    boxes = list()
+    labels = list()
+    difficulties = list()
+    for object in root.iter('object'):
+
+        difficult = int(object.find('difficult').text == '1')
+
+        label = object.find('name').text.lower().strip()
+        print(label)
+        if label not in label_map:
+            continue
+
+        print(label)
+
+        bbox = object.find('bndbox')
+        xmin = int(bbox.find('xmin').text) - 1
+        ymin = int(bbox.find('ymin').text) - 1
+        xmax = int(bbox.find('xmax').text) - 1
+        ymax = int(bbox.find('ymax').text) - 1
+
+        boxes.append([xmin, ymin, xmax, ymax])
+        labels.append(label_map[label])
+        difficulties.append(difficult)
+
+    return {'boxes': boxes, 'labels': labels, 'difficulties': difficulties}
 
 
 if __name__ == '__main__':
-    create_data_lists(path_to_data='./dataset_2',
-                      output_folder='./')
+    create_data_lists(path_to_data='./dataset_2',output_folder='./')
