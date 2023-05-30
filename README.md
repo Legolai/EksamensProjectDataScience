@@ -71,6 +71,7 @@ Make sure that the python installation you have includes ```tkinter```.
 7. Now that you have a trained model, modifier the ```eval.py``` script and run it to see how good the model is compared to you.
 
 **App**
+[*Get trained model*](https://drive.google.com/file/d/1Z8nXowDxZUV9Fm4JA09eDTbivA0Oaerl/view?usp=share_link)
 
 8. Modifier the detect file ```detect.py```, change the checkpoint variable to the trained model you wish to use. Then run the program ```python3 app.py```
 
