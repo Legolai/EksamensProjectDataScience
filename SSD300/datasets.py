@@ -88,7 +88,7 @@ class PascalVOCDataset(Dataset):
         return images, boxes, labels, difficulties
 
 
-class CustomDataset(Dataset):
+class CustomDatasetCSV(Dataset):
     split: str
     data_folder: str
     keep_difficult: bool

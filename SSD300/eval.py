@@ -1,5 +1,5 @@
 from utils import *
-from datasets import PascalVOCDataset, CustomDataset
+from datasets import PascalVOCDataset, CustomDatasetCSV
 from tqdm import tqdm
 from pprint import PrettyPrinter
 from torch.utils.data import DataLoader
@@ -28,7 +28,7 @@ model.eval()
 # test_dataset = PascalVOCDataset(data_folder,
 #                                 split='test',
 #                                 keep_difficult=keep_difficult)
-test_dataset = CustomDataset(data_folder, split='test')
+test_dataset = CustomDatasetCSV(data_folder, split='test')
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False,
                          collate_fn=test_dataset.collate_fn, num_workers=workers, pin_memory=True)
 
