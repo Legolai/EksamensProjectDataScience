@@ -44,6 +44,12 @@ Install Selenium
 pip3 install selenium
 ```
 
+Install tqdm
+
+```
+pip3 install tqdm
+```
+
 Make sure that the python installation you have includes ```tkinter```.
 
 ### User guide
