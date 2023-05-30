@@ -88,7 +88,7 @@ class PascalVOCDataset(Dataset):
         return images, boxes, labels, difficulties
 
 
-class CustomDataset(Dataset):
+class CustomDatasetCSV(Dataset):
     split: str
     data_folder: str
     keep_difficult: bool
@@ -107,11 +107,39 @@ class CustomDataset(Dataset):
         self.data_folder = data_folder
         self.keep_difficult = keep_difficult
 
+        dataset = list()
         # Read data files
         with open(os.path.join(data_folder, self.split.lower() + ".csv"), 'r') as file:
             reader = csv.reader(file)
             header = next(reader)
-            self.dataset = [dict(zip(header, row)) for row in reader]
+            dataset = [dict(zip(header, row)) for row in reader]
+        
+        data_entries = dict()
+
+        for data_row in dataset:
+            file_name = data_row["filename"]
+            x_min = float(data_row["xmin"])
+            y_min = float(data_row["ymin"])
+            x_max = float(data_row["xmax"])
+            y_max = float(data_row["ymax"])
+            class_name = data_row["class"]
+            difficult = int(data_row.get("difficult", 0))
+
+            if file_name not in data_entries:
+                data_entries[file_name] = {
+                    "filename": file_name,
+                    "boxes": list(),
+                    "labels": list(),
+                    "difficulties": list()
+                }
+            
+            data_entries[file_name]["boxes"].append([x_min, y_min, x_max, y_max])
+            data_entries[file_name]["labels"].append(label_map[class_name])
+            data_entries[file_name]["difficulties"].append(difficult)
+
+        self.dataset = list(data_entries.values())
+        
+
 
     def __getitem__(self, i):
         data_row = self.dataset[i]
@@ -121,22 +149,11 @@ class CustomDataset(Dataset):
         image = Image.open(
             f"./images/{self.split.lower()}/{filename}", mode='r')
         image = image.convert('RGB')
+       
 
-        # Read objects in this image (bounding boxes, labels, difficulties)
-        min_x = float(data_row["xmin"])
-        min_y = float(data_row["ymin"])
-        max_x = float(data_row["xmax"])
-        max_y = float(data_row["ymax"])
-
-        objects = {
-            "boxes": [[min_x, min_y, max_x, max_y]],
-            "labels": [label_map[data_row["class"]]],
-            "difficulties": [0]
-        }
-
-        boxes = torch.FloatTensor(objects["boxes"])  # (n_objects, 4)
-        labels = torch.LongTensor(objects["labels"])  # (n_objects)
-        difficulties = torch.ByteTensor(objects["difficulties"])  # (n_objects)
+        boxes = torch.FloatTensor(data_row["boxes"])  # (n_objects, 4)
+        labels = torch.LongTensor(data_row["labels"])  # (n_objects)
+        difficulties = torch.ByteTensor(data_row["difficulties"])  # (n_objects)
 
         # Apply transformations
         image, boxes, labels, difficulties = transform(
