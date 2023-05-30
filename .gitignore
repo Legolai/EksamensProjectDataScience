@@ -4,3 +4,4 @@ SSD300/__pycache__/
 *.tar
 rcnn/dataset
 scrappedImages
+old

@@ -88,8 +88,51 @@ dataset.py
     Besides the changes to allow for this, it functionally is the same as CustomDataset2
 
 
-model.py
-    Is the .py file with our model method along with 4 other auxiliary methods
-    as
+model.py            ## Extra notes: maybe some more on convolutions
+    Is the .py file with our model class along with 4 other auxiliary classes
+    
+    The model class 'SSD300' inherits 'nn.Module' from pytorch and in the '__init__' the 3 variables 
+    'self.base', 'self.aux_convs', 'self.pred_convs' are initialized
+    Respecitively they call the 3 classes 'VGGBase', 'AuxiliaryConvolutions' and 'PredictionConvolutions'
+        These 3 classes consists of the 'VGGBase' that provides the foundation/basis convolutions from an existing network (VGG-16)
+        'AuxiliaryConvolutions' provides a higher level convolution/feature map on top of the base
+        'PredictionConvolutions' makes prediction for boundary boxes around objects based on the above 2 convolutions
+
+        Starting with 'VGGBase', we initialize numerous 'nn.Conv2d' according to the **VGG-16 architecture** with some small changes
+        Before then calling 'self.load_pretrained_layers()' which is a method in the 'VGGBase' class
+        The 'load_pretrained_layers' loads the pretrained VGG16 model from 'torchvision.models.vgg16', afterwards
+        some changes are made to fc6, fc7 because of the changes made to conv6 and conv7 earlier
+        'forward' for forward propagation uses 'leaky_relu' instead of 'relu'
+
+        'AuxiliaryConvolutions' can be said to be an extension of our 'VGGBase', as it continues from 'self.conv7 = nn.Conv2d'
+        ('conv8_1', 'conv8_2', 'conv9_1' up to 'conv11_2')
+        Basically more convolutional layers are stacked on top of the base network 'VGGBase', 
+        providing more feature maps, each progressively smaller than the last
+
+        'PredictionConvolutions' creates 2 convolutional layers for each feature map (such as conv4_3, conv7, conv8_2 etc.)
+        One layer is the localization prediction convolutional layer with 4 filters for each prior at current location
+            the 4 filters calculates the offset to the bounding box
+        While the other is the class prediction layer with n_classes filters for each prior at current location
+            the n_classes calculates a set of n_scores for that prior (0.9 pigeon, 0.1 background as an example likely means pigeon in prior)
+        Prior boxes per position in each feature map is "planned ahead of time" (such as 'conv4_3': 4, 'conv7': 6 etc.)
+
+    After the above, the '__init__' of 'SSD300' class ends with 'self.priors_cxcy = self.create_prior_boxes()' to create priors
+    
+    'create_prior_boxes' method creates the priors in center-size coordinates as defined for our selected feature maps (in correct order).
+    To that end there's variables like 'obj_scales' and 'aspect_ratios'
+    when done the variable 'prior_boxes' be returned while holding 8732 priors with 4 filters
+
+    The last method 'detect_objects' of 'SSD300' is not used by our 'train.py' but instead in 'eval.py' and 'detect.py'
+    Instead, what used in training is the last class of the file 'MultiBoxLoss'
+    For 'detect_objects'
+
+
+    'MultiBoxLoss' is a loss function for object detection
+
+
+
+
+
+
 
 

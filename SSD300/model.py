@@ -479,6 +479,7 @@ class SSD300(nn.Module):
 
         return prior_boxes
 
+
     def detect_objects(self, predicted_locs, predicted_scores, min_score, max_overlap, top_k):
         """
         Decipher the 8732 locations and class scores (output of ths SSD300) to detect objects.
