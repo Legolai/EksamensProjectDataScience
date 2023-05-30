@@ -7,7 +7,7 @@ Group members:
 
 ## Pigeon Detector
 
-The idea of this project was to create a model that could take a video feed and detect in each frame where there is pigeons and scare them away in some way. Here it was important for us the the model had mixed balance of both speed and accuracy, so that the pigeon could be detect and dealt with. To do this we settled on the SSD (single shot detection) method, because it seem faster than Faster RCNN but less accuracte, YOLO was also an option which seems to be faster than SSD but less accuracte. So SSD feelt like a good balance. The whole idea was in the end to setup a raspberry pi with camera and the model connect to water hose or microfon to scare pigeons away from the area of which the camera points to. 
+The idea of this project was to create a model that could take a video feed and detect in each frame where there is pigeons and scare them away in some way. Here it was important for us the the model had mixed balance of both speed and accuracy, so that the pigeon could be detect and dealt with. To do this we settled on the SSD (single shot detection) method, because it seem faster than Faster RCNN but less accuracte, YOLO was also an option which seems to be faster than SSD but less accuracte. So SSD feelt like a good balance. The whole idea was in the end to setup a raspberry pi with camera and the model connect to water hose or speaker to scare pigeons away from the area of which the camera points to. 
 
 ### Technologies used
 
