@@ -128,7 +128,44 @@ model.py            ## Extra notes: maybe some more on convolutions
 
 
     'MultiBoxLoss' is a loss function for object detection
+    This is a combination of:
+    (1) a localization loss for the predicted locations of the boxes, and
+    (2) a confidence loss for the predicted class scores.
 
+    Done by matching the 8732 predicted priors to the ground truth by using Jaccard overlaps (less 0.5 = negative, greather than 0.5 = positive)
+    Then the total multibox loss is the aggregate of the positive and most/hard negative (the majority should be negative, 
+        so to prevent model getting good at detecting only the background, we only take most negative)
+
+
+optimizer.py            
+    Demon ADAM is an optimizer we're just using, no idea about insides
+
+
+train.py
+    'main'
+    Starts with loading the data with 'CustomDataset2' and then parsing it to 'torch.utils.data.DataLoader' with some extra parameters
+    Then setup for epochs and decay rate
+    And then the model is initialized
+    And finally at the end a for loop for the epochs
+
+    'train'
+    Is one epoch's training and is pretty straightforward with the notes in it
+
+    
+
+
+eval.py
+    Simply evaluates the produced model (checkpoint) against some test images (and their annotations) that haven't been used in training
+
+detect.py
+    For use of the app.py so that it can use the model to detect
+
+app.py
+    All about setting up the use of the webcam and the program to run
+
+
+
+utils.py
 
 
 
